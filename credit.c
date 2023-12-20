@@ -74,9 +74,9 @@ void firsttwo(long card)
     }
     else if ((card >= 51e14 && card < 56e14))
     {
-        printf("MasterCard\n");
+        printf("MASTERCARD\n");
     }
-    else if (card >= 4e12 || card >= 4e15)
+    else if ((card >= 4e12) || (card >= 4e15))
     {
         printf("VISA\n");
     }
