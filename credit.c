@@ -76,7 +76,7 @@ void firsttwo(long card)
     {
         printf("MASTERCARD\n");
     }
-    else if ((card >= 4e12) || (card >= 4e15))
+    else if ((card >= 4e12 && card < 5e12) || (card >= 4e15 && card < 5e15))
     {
         printf("VISA\n");
     }
