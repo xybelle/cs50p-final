@@ -22,7 +22,7 @@ int main()
     }
     else
     {
-        printf("Invalid\n");
+        printf("INVALID\n");
     }
 }
 
@@ -82,6 +82,6 @@ void firsttwo(long card)
     }
     else
     {
-        printf("Invalid\n");
+        printf("INVALID\n");
     }
 }
