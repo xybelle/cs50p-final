@@ -19,16 +19,16 @@ int main(void)
     int sentences = count_sentences(text);
 
     // Compute the Coleman-Liau index
-    float L = 100.0 * (float) letters / (float) words;
-    float S = 100.0 * (float) sentences / (float) words;
+    float L = 100.0 * letters / words;
+    float S = 100.0 * sentences / words;
     float index = 0.0588 * L - 0.296 * S - 15.8;
 
     // Print the grade level
-    if ((int) round(index) >= 16)
+    if ((float) round(index) >= 16)
     {
         printf("Grade 16+\n");
     }
-    else if ((int) round(index) < 1)
+    else if ((float) round(index) < 1)
     {
         printf("Before Grade 1\n");
     }
@@ -36,9 +36,6 @@ int main(void)
     {
         printf("Grade %i\n", (int) round(index));
     }
-
-    printf("%i %i %i %i\n", letters, words, sentences, (int) round(index));
-
 }
 
 int count_letters(string text)
@@ -75,7 +72,7 @@ int count_sentences(string text)
     int cs = 0;
     for (int i = 0, j = strlen(text); i < j; i++)
     {
-        if (ispunct(text[i]))
+        if (text[i] == '.' || text[i] == '!' || text[i] == '?')
         {
             cs++;
         }
