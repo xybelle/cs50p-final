@@ -5,12 +5,12 @@
 #include <string.h>
 
 bool only_digits(string argv[1]);
-char rotate (char c, int k);
+char rotate(char c, int k);
 
 int main(int argc, string argv[])
 {
     // Check number of command-line argument
-    if ((argc <= 1 ) || (argc > 2))
+    if ((argc <= 1) || (argc > 2))
     {
         printf("Usage: ./caesar key\n");
         return 1;
@@ -20,20 +20,23 @@ int main(int argc, string argv[])
         // Convert argv[1] to int
         int k = atoi(argv[1]);
 
+        // Prompt user for plaintext
         string plaintext = get_string("Plaintext:  ");
         int i = strlen(plaintext);
+
+        // Call function to rotate each character
         for (int j = 0; j < i; j++)
         {
-            plaintext[j] = rotate (plaintext[j], k);
+            plaintext[j] = rotate(plaintext[j], k);
         }
 
+        // Print ciphertext
         printf("Ciphertext: ");
         for (int j = 0; j < i; j++)
         {
             printf("%c", plaintext[j]);
         }
         printf("\n");
-
     }
     else
 
@@ -62,7 +65,8 @@ bool only_digits(string argv[1])
     return false;
 }
 
-char rotate (char c, int k)
+// Rotate character if it's a letter
+char rotate(char c, int k)
 {
     if (isalpha(c))
     {
