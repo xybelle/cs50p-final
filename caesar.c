@@ -15,13 +15,7 @@ int main(int argc, string argv[])
         printf("Usage: ./caesar key\n");
         return 1;
     }
-    else if (argc == '1')
-    {
-        return 0;
-    }
-
-    // Check if argv[1] is a digit
-    if (only_digits(argv))
+    else if (only_digits(argv))
     {
         // Convert argv[1] to int
         int k = atoi(argv[1]);
@@ -49,10 +43,19 @@ int main(int argc, string argv[])
     }
 }
 
+// Check if argv[1] is a digit
 bool only_digits(string argv[1])
 {
-    char i = atoi(argv[1]);
-    if (isdigit(i))
+    int i = strlen(argv[1]);
+    int c = 0;
+    for (int j = 0; j < i; j++)
+    {
+        if (isdigit(argv[1][j]))
+        {
+            c++;
+        }
+    }
+    if (c == i)
     {
         return true;
     }
