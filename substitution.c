@@ -1,12 +1,13 @@
 #include <cs50.h>
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 bool all_alpha(string key);
 bool all_unique(string key);
 bool key_count(string key);
-char ciphertext(char plaintext, char key[]);
+char ciphertext(char plaintext, string key);
 
 int main(int argc, string argv[])
 {
@@ -98,7 +99,7 @@ bool all_unique(string key)
 }
 
 // Ciphertext
-char ciphertext(char plaintext, char key[])
+char ciphertext(char plaintext, string key)
 {
     int ci = 0;
     char cipher = 0;
@@ -114,7 +115,7 @@ char ciphertext(char plaintext, char key[])
         {
             ci = plaintext - 97;
             cipher = key[ci];
-            return cipher + 32;
+            return cipher;
         }
     }
     return plaintext;
