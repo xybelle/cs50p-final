@@ -1,0 +1,11 @@
+sort1 uses: bubble
+
+How do you know?: performed worst in reverse case
+
+sort2 uses: merge
+
+How do you know?: performed best in all scenarios
+
+sort3 uses: selection
+
+How do you know?: not as efficient as sort 2 especially for the larger datasets (also because it's the only other option)
