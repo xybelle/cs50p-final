@@ -77,9 +77,8 @@ bool all_alpha(string key)
     if (digit >= 1)
     {
         printf("Key must contain 26 characters.\n");
-        return 1;
     }
-    return 0;
+    return true;
 }
 
 // Check if each key is unique
