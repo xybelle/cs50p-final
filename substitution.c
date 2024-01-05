@@ -115,7 +115,7 @@ char ciphertext(char plaintext, string key)
         {
             ci = plaintext - 97;
             cipher = key[ci] % 26;
-            return cipher + 32;
+            return cipher - 32;
         }
     }
     return plaintext;
