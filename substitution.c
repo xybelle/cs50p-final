@@ -67,17 +67,21 @@ bool key_count(string key)
 // Check if key contains anything but alphabet
 bool all_alpha(string key)
 {
-    int digit = 0;
+    int count = 0;
     for (int i = 0; i < 26; i++)
     {
-        if (isdigit(key[i]))
+        if (isalpha(key[i]))
         {
-            digit++;
+            count++;
         }
     }
-    if (digit >= 1)
+    if (count == 26)
     {
-        printf("Key must contain 26 characters.\n");
+        return true;
+    }
+    else
+    {
+        return false;
     }
     return true;
 }
