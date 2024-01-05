@@ -109,13 +109,13 @@ char ciphertext(char plaintext, string key)
         {
             ci = plaintext - 65;
             cipher = key[ci] % 26;
-            return cipher;
+            return cipher + 65;
         }
         else if (islower(plaintext))
         {
             ci = plaintext - 97;
             cipher = key[ci] % 26;
-            return cipher - 32;
+            return cipher + 97;
         }
     }
     return plaintext;
