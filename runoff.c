@@ -150,11 +150,6 @@ void tabulate(void)
                 candidates[preferences[i][j]].votes++;
                 break;
             }
-            else
-            {
-                candidates[preferences[i][j + 1]].votes++;
-                break;
-            }
         }
     }
 
@@ -199,7 +194,7 @@ bool is_tie(int min)
             remaining++;
     }
 
-    if (remaining % min == 0)
+    if ((remaining * min) == voter_count)
     {
         return true;
     }
