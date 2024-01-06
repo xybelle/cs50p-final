@@ -150,8 +150,6 @@ void tabulate(void)
                 candidates[j].votes++;
                 break;
             }
-            else
-                break;
         }
     }
 
