@@ -103,7 +103,7 @@ bool vote(int rank, string name, int ranks[])
     {
         if (strcmp(candidates[i], name) == 0)
         {
-            ranks[i] = rank;
+            ranks[rank] = i;
             return true;
         }
     }
@@ -160,7 +160,6 @@ void sort_pairs(void)
                 temp = preferences[pairs[i].winner][pairs[i].loser];
                 preferences[pairs[i].winner][pairs[i].loser] = preferences[pairs[j].winner][pairs[j].loser];
                 preferences[pairs[j].winner][pairs[j].loser] = temp;
-
             }
         }
     }
