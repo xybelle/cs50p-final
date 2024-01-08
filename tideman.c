@@ -32,6 +32,7 @@ void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
+bool loop(int find, int n);
 
 int main(int argc, string argv[])
 {
@@ -164,26 +165,32 @@ void sort_pairs(void)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    bool loop = false;
+
     for (int i = 0; i < pair_count; i++)
     {
-        for (int j = i + 1; j <= i; j++)
-        {
-            if (pairs[i].loser == pairs[j].winner)
-            {
-                loop = true;
-            }
-            else if (pairs[i].winner == pairs[j].loser)
-            {
-                loop = true;
-            }
-        }
-        if (loop == false)
-        {
-            locked[pairs[i].winner][pairs[i + 1].loser] = true;
-        }
+        locked[pairs[i].winner][pairs[i].loser] = loop(pairs[i].winner, pairs[i].loser);
     }
     return;
+}
+
+bool loop(int find, int n)
+{
+    for (int i = 0; i < pair_count; i++)
+    {
+        if (locked[n][find])
+        {
+            return false;
+        }
+        else if (locked[find][n])
+        {
+            return false;
+        }
+        else if (locked[n][i])
+        {
+            return loop(find, i);
+        }
+    }
+    return true;
 }
 
 // Print the winner of the election
