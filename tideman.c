@@ -198,6 +198,16 @@ bool loop(int winner, int loser)
 // Print the winner of the election
 void print_winner(void)
 {
-    printf("%s\n", candidates[pairs[0].winner]);
+    for (int i = 0; i < pair_count; i++)
+    {
+        if (locked[i][i])
+        {
+            printf("%s\n", candidates[pairs[i].winner]);
+        }
+        else
+        {
+            return;
+        }
+    }
     return;
 }
