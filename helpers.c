@@ -9,7 +9,7 @@ float min(float *a, int *b);
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
     // Loop through all pixels
-    int avergb;
+    float avergb;
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
