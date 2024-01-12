@@ -1,9 +1,9 @@
 #include "helpers.h"
 #include <math.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 float min(float *a, int *b);
-
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -63,23 +63,20 @@ float min(float *a, int *b)
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
     int h = height, w = width;
-    RGBTRIPLE tmp[h][w];
+    RGBTRIPLE tmp;
 
-    // Copy to temporary
+    // Swap
     for (int i = 0; i < height; i++)
     {
-        w = width;
-        for (int j = 0, n = width/2; j <= n; j++)
+        for (int j = 0, n = width/2; j < n; j++)
         {
-            tmp[i][j] = image[i][w];
+            tmp = image[i][w];
             image[i][w] = image[i][j];
-            image[i][j] = tmp[i][j];
+            image[i][j] = tmp;
             w--;
         }
-
+        w = width;
     }
-
-
     return;
 }
 
