@@ -79,6 +79,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     return;
 }
 
+// Swap pixels
 void swap(RGBTRIPLE *a, RGBTRIPLE *b)
 {
     RGBTRIPLE tmp = *a;
@@ -102,10 +103,11 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            int counter = 0;
+            float counter = 0;
 
             // Edge and corner
-            if (((i == 0 && j == 0) || ((i == height) && j == 0) || (i == 0 && (j == width)) || ((i == height) && (j == width))))
+            if (((i == 0 && j == 0) || ((i == height - 1) && j == 0) || (i == 0 && (j == width - 1)) ||
+                ((i == height - 1) && (j == width - 1))))
             {
                 for (int x = -1; x < 2; x++)
                 {
@@ -117,9 +119,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         counter++;
                     }
                 }
-                image[i][j].rgbtRed = copy[i][j].rgbtRed / counter;
-                image[i][j].rgbtGreen = copy[i][j].rgbtGreen / counter;
-                image[i][j].rgbtBlue = copy[i][j].rgbtBlue / counter;
+                image[i][j].rgbtRed = round(copy[i][j].rgbtRed / (float) counter);
+                image[i][j].rgbtGreen = round(copy[i][j].rgbtGreen / (float) counter);
+                image[i][j].rgbtBlue = round(copy[i][j].rgbtBlue / (float) counter);
 
                 break;
             }
@@ -138,9 +140,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         counter++;
                     }
                 }
-                image[i][j].rgbtRed = copy[i][j].rgbtRed / counter;
-                image[i][j].rgbtGreen = copy[i][j].rgbtGreen / counter;
-                image[i][j].rgbtBlue = copy[i][j].rgbtBlue / counter;
+                image[i][j].rgbtRed = round(copy[i][j].rgbtRed / (float) counter);
+                image[i][j].rgbtGreen = round(copy[i][j].rgbtGreen / (float) counter);
+                image[i][j].rgbtBlue = round(copy[i][j].rgbtBlue / (float) counter);
 
                 break;
             }
