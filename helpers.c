@@ -39,12 +39,9 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             // Get sepia values
-            sepiaRed = (.393 * image[i][j].rgbtRed) + (.769 * image[i][j].rgbtGreen)
-                 + (.189 * image[i][j].rgbtBlue);
-            sepiaGreen = (.349 * image[i][j].rgbtRed) + (.686 * image[i][j].rgbtGreen)
-                 + (.168 * image[i][j].rgbtBlue);
-            sepiaBlue = (.272 * image[i][j].rgbtRed) + (.534 * image[i][j].rgbtGreen)
-                 + (.131 * image[i][j].rgbtBlue);
+            sepiaRed = (.393 * image[i][j].rgbtRed) + (.769 * image[i][j].rgbtGreen) + (.189 * image[i][j].rgbtBlue);
+            sepiaGreen = (.349 * image[i][j].rgbtRed) + (.686 * image[i][j].rgbtGreen) + (.168 * image[i][j].rgbtBlue);
+            sepiaBlue = (.272 * image[i][j].rgbtRed) + (.534 * image[i][j].rgbtGreen) + (.131 * image[i][j].rgbtBlue);
 
             // Update pixel values
             image[i][j].rgbtRed = round(min(&sepiaRed, &max));
@@ -67,7 +64,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     for (int i = 0; i < height; i++)
     {
         int w = width - 1;
-        for (int j = 0, n = width/2; j < n; j++)
+        for (int j = 0, n = width / 2; j < n; j++)
         {
             if (j == n)
             {
