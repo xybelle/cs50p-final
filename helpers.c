@@ -120,12 +120,14 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     blue += copy[i + x][j + y].rgbtBlue;
                     counter++;
                 }
+
+                if (skip)
+                {
+                    break;
+                }
             }
-            if (skip)
-            {
-                break;
-            }
-            else
+
+            if (!skip)
             {
                 image[i][j].rgbtRed = round(red / (float) counter);
                 image[i][j].rgbtGreen = round(green / (float) counter);
