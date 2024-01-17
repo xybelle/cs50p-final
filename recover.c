@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
     FILE *img = NULL; // Initialize to NULL
 
     bool firstjpg = false;
-    bool newjpg = true;
 
     // Read from memory card while there is still data left
     while (fread(buffer, 1, BLOCK_SIZE, card) == BLOCK_SIZE)
