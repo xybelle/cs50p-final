@@ -16,8 +16,14 @@ typedef struct node
     struct node *next;
 } node;
 
+// Initialize alphabet size
+const unsigned int ALPHA_SIZE = 26;
+
 // TODO: Choose number of buckets in hash table
-const unsigned int N = 26 * 26 * 26;
+const unsigned int N = 26 * ALPHA_SIZE * ALPHA_SIZE;
+
+// Global variable to store total size
+unsigned int total_size = 0;
 
 // Hash table
 node *table[N];
@@ -32,16 +38,14 @@ bool check(const char *word)
     node *tmp = table[x];
 
     // Traverse linked list
-    while (tmp->next != NULL)
+    while (tmp != NULL)
     {
-        if (strcasecmp(word, tmp->word) != 0)
-        {
-            tmp = tmp->next;
-        }
-        else
+        if (strcasecmp(word, tmp->word) == 0)
         {
             return true;
         }
+
+        tmp = tmp->next;
     }
     return false;
 }
@@ -49,19 +53,31 @@ bool check(const char *word)
 // Hashes word to a number
 unsigned int hash(const char *word)
 {
-    // TODO: Improve this hash function
-    if (strlen(word) < 3)
+    // Check if word is nto null
+    if (word == NULL || strlen(word) < 3)
     {
         return 0;
     }
 
-    int a = toupper(word[0] - 'A');
-    int b = toupper(word[1] - 'A');
-    int c = toupper(word[2] - 'A');
-    int x = (a * 26 * 26) + (b * 26) + c;
+    // Initialize result to 0
+    unsigned int result = 0;
+
+    // Use the first three characters of the word
+    for (int i = 0; i < 3; i++)
+    {
+        // Handle uppercase characters
+        if (isupper(word[i]))
+        {
+            result = result * ALPHA_SIZE + (word[i] - 'A');
+        }
+        else // Handle lowercase characters
+        {
+            result = result * ALPHA_SIZE + (word[i] - 'a');
+        }
+    }
 
     // Ensure the result is within the range of the hash table size
-    return x % N;
+    return result % N;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
@@ -82,12 +98,16 @@ bool load(const char *dictionary)
         node *new_node = (malloc(sizeof(node)));
         if (new_node == NULL)
         {
+            free(new_node);
             return false;
         }
         new_node->next = NULL;
 
         // Copy the word into the new node
         strcpy(new_node->word, words);
+
+        // Increment total size
+        total_size++;
 
         // Hash the word to obtain its hash value
         int x = hash(words);
@@ -106,20 +126,7 @@ bool load(const char *dictionary)
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
 unsigned int size(void)
 {
-    // TODO
-    int counter = 0;
-
-    for (int i = 0; i < N; i++)
-    {
-        node *tmp = table[i];
-
-        while (tmp != NULL)
-        {
-            counter++;
-            tmp = tmp->next;
-        }
-    }
-    return counter;
+    return total_size;
 }
 
 // Unloads dictionary from memory, returning true if successful, else false
@@ -136,6 +143,8 @@ bool unload(void)
             tmp1 = tmp1->next;
             free(tmp2);
         }
+
+        table[i] = NULL;
     }
     return true;
 }
