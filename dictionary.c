@@ -29,11 +29,7 @@ bool check(const char *word)
     int x = hash(word);
 
     // Access linked list
-    node *tmp = malloc(sizeof(node));
-    if (tmp == NULL)
-    {
-        return 1;
-    }
+    node *tmp = table[x];
 
     // Traverse linked list
     while (tmp->next != NULL)
@@ -111,27 +107,16 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
-    node *tmp = malloc(sizeof(node));
-    if (tmp == NULL)
-    {
-        return 0;
-    }
+    int counter = 0;
 
-    int index = 0, counter = 0;
-    while (index != N - 1)
+    for (int i = 0; i < N; i++)
     {
-        tmp = table[index];
+        node *tmp = table[i];
 
-        if (table[index] == NULL)
+        while (tmp != NULL)
         {
-            continue;
-        }
-        else
-        {
-            while (tmp->next != NULL)
-            {
-                counter++;
-            }
+            counter++;
+            tmp = tmp->next;
         }
     }
     return counter;
@@ -140,20 +125,17 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    // TODO
-    // Initialize a temporary pointer to keep track
-    node *tmp1 = malloc(sizeof(node));
-    node *tmp2 = malloc(sizeof(node));
-
-    int index = 0;
-    while (index != N - 1)
+    for (int i = 0; i < N; i++)
     {
-        tmp1 = table[index];
-        tmp2 = tmp1;
+        node *tmp1 = table[i];
+        node *tmp2;
 
-        tmp1 = tmp1->next;
-        free(tmp2);
-        index++;
+        while (tmp1 != NULL)
+        {
+            tmp2 = tmp1;
+            tmp1 = tmp1->next;
+            free(tmp2);
+        }
     }
     return true;
 }
