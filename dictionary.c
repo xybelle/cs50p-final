@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 
 #include "dictionary.h"
 
@@ -16,7 +17,7 @@ typedef struct node
 } node;
 
 // TODO: Choose number of buckets in hash table
-const unsigned int N = 26;
+const unsigned int N = 26 * 26 * 26;
 
 // Hash table
 node *table[N];
@@ -24,7 +25,28 @@ node *table[N];
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    // TODO
+    // Obtain hash value
+    int x = hash(word);
+
+    // Access linked list
+    node *tmp = malloc(sizeof(node));
+    if (tmp == NULL)
+    {
+        return 1;
+    }
+
+    // Traverse linked list
+    while (tmp->next != NULL)
+    {
+        if (strcasecmp(word, tmp->word) != 0)
+        {
+            tmp = tmp->next;
+        }
+        else
+        {
+            return true;
+        }
+    }
     return false;
 }
 
@@ -32,7 +54,18 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     // TODO: Improve this hash function
-    return toupper(word[0]) - 'A';
+    if (strlen(word) < 3)
+    {
+        return 0;
+    }
+
+    int a = toupper(word[0] - 'A');
+    int b = toupper(word[1] - 'A');
+    int c = toupper(word[2] - 'A');
+    int x = (a * 26 * 26) + (b * 26) + c;
+
+    // Ensure the result is within the range of the hash table size
+    return x % N;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
@@ -53,8 +86,9 @@ bool load(const char *dictionary)
         node *new_node = (malloc(sizeof(node)));
         if (new_node == NULL)
         {
-            return 1;
+            return false;
         }
+        new_node->next = NULL;
 
         // Copy the word into the new node
         strcpy(new_node->word, words);
@@ -77,12 +111,49 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
-    return 0;
+    node *tmp = malloc(sizeof(node));
+    if (tmp == NULL)
+    {
+        return 0;
+    }
+
+    int index = 0, counter = 0;
+    while (index != N - 1)
+    {
+        tmp = table[index];
+
+        if (table[index] == NULL)
+        {
+            continue;
+        }
+        else
+        {
+            while (tmp->next != NULL)
+            {
+                counter++;
+            }
+        }
+    }
+    return counter;
 }
 
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
     // TODO
-    return false;
+    // Initialize a temporary pointer to keep track
+    node *tmp1 = malloc(sizeof(node));
+    node *tmp2 = malloc(sizeof(node));
+
+    int index = 0;
+    while (index != N - 1)
+    {
+        tmp1 = table[index];
+        tmp2 = tmp1;
+
+        tmp1 = tmp1->next;
+        free(tmp2);
+        index++;
+    }
+    return true;
 }
