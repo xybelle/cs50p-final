@@ -23,6 +23,7 @@ def main():
     else:
         print(f"Grade {int(round(index))}")
 
+
 def count_letters(txt):
     return sum(c.isalpha() for c in txt)
 
