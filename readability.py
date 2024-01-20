@@ -33,11 +33,11 @@ def count_words(txt):
 
 
 def count_sentences(txt):
-    dot_count = txt.count('.')
-    excl_count = txt.count('!')
-    question_count = txt.count('?')
-
-    cs = dot_count + excl_count + question_count
+    sentence_endings = ['.', '!', '?']
+    cs = 0
+    for char in txt:
+        if char in sentence_endings:
+            cs += 1
 
     return cs
 
