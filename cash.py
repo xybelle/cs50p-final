@@ -18,7 +18,7 @@ def main():
 
     coins = quarters + dimes + nickels + pennies
     print(coins)
-    
+
 
 def get_cents():
     while True:
