@@ -1,6 +1,25 @@
 from cs50 import get_float
 
 
+def main():
+    cents = get_cents()
+
+    quarters = calc_quarters(cents)
+    cents = cents - quarters * 25
+
+    dimes = calc_dimes(cents)
+    cents = cents - dimes * 10
+
+    nickels = calc_nickels(cents)
+    cents = cents - nickels * 5
+
+    pennies = calc_pennies(cents)
+    cents = cents - pennies * 1
+
+    coins = quarters + dimes + nickels + pennies
+    print(coins)
+    
+
 def get_cents():
     while True:
         c = int(get_float("Change owed: ") * 100)
@@ -40,25 +59,6 @@ def calc_pennies(cents):
         cents -= 1
         pennies += 1
     return pennies
-
-
-def main():
-    cents = get_cents()
-
-    quarters = calc_quarters(cents)
-    cents = cents - quarters * 25
-
-    dimes = calc_dimes(cents)
-    cents = cents - dimes * 10
-
-    nickels = calc_nickels(cents)
-    cents = cents - nickels * 5
-
-    pennies = calc_pennies(cents)
-    cents = cents - pennies * 1
-
-    coins = quarters + dimes + nickels + pennies
-    print(coins)
 
 
 main()
