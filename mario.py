@@ -4,7 +4,7 @@ from cs50 import get_int
 def main():
     while True:
         height = get_int("Height: ")
-        if height > 0 and height < 8:
+        if 0 < height <= 8:
             break
     draw(height)
 
