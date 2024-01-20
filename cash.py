@@ -3,7 +3,7 @@ from cs50 import get_float
 
 def get_cents():
     while True:
-        c = get_float("Change owed: ")
+        c = int(get_float("Change owed: ") * 100)
         if c is not None and c > 0:
             return c
         else:
