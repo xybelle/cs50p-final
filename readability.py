@@ -21,7 +21,7 @@ def main():
     elif round(index) < 1:
         print("Before Grade 1")
     else:
-        print(f"Grade {round(index)}")
+        print(f"Grade {int(round(index))}")
 
 def count_letters(txt):
     return len(txt)
