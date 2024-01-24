@@ -1,0 +1,12 @@
+1. Based on the average energy, valence, danceability of the songs listened to, the person
+    appears to really like songs that are quite intense and has strong, steady beat or danceable
+    and sounds more on negative side (e.g. angry, sad, etc.) given the low average valence.
+    // avg_energy = 0.65906 (max_energy: 0.909) // avg_valence = 0.484443 (max_valence: 0.931)
+    // avg_danceability = 0.71646 (max_danceability: 0.964)
+
+2. The audio aura (if calculated this way) may not be very representative of the listener
+    because 1.) some songs may be part of a playlist (not created by user) where the listener
+    may not really like all the other songs in the playlist, 2.) sometimes it may be another
+    person who has access to the listener's phone (or account) could play some of the songs.
+    It might be better to look into what songs the listener actually liked (or hearted?), also
+    looking at how many times they listened to it.
