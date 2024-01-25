@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Trivia!</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let correct = document.querySelector('.correct');
+            correct.addEventListener('click', function() {
+                correct.style.backgroundColor = 'green';
+                document.querySelector('#result').innerHTML = 'Correct!';
+            });
+
+            let incorrects = document.querySelectorAll('.incorrect');
+            for (let i = 0; i < incorrects.length; i++) {
+                incorrects[i].addEventListener('click', function() {
+                    incorrects[i].style.backgroundColor = 'red';
+                    incorrects[i].parentElement.querySelector('#result').innerHTML = 'Incorrect';
+                });
+            }
+
+            document.querySelector('#check').addEventListener('click', function() {
+                let input = document.querySelector('input');
+                if (input.value == 'Golduck') {
+                    input.style.backgroundColor = 'green';
+                    input.parentElement.querySelector('#result').innerHTML = 'Correct!';
+                } else {
+                    input.style.backgroundColor = 'red';
+                    input.parentElement.querySelector('#result').innerHTML = 'Incorrect';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Part 1: Multiple Choice </h2>
+            <hr>
+            <h3>What type of pokemon is a Psyduck?</h3>
+            <p id="result"></p>
+            <button class="incorrect"> Grass-type pokemon </button>
+            <button class="correct"> Water-type pokemon </button>
+            <button class="incorrect"> Fire-type pokemon </button>
+        </div>
+
+        <div class="section">
+            <h2>Part 2: Free Response</h2>
+            <hr>
+            <h3>What is the evolved Psyduck called?</h3>
+            <p id="result"></p>
+            <input type="text" name="answer" placeholder="Answer">
+            <button id="check"> Check answer </button>
+        </div>
+    </div>
+</body>
+</html>
