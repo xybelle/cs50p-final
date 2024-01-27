@@ -1,0 +1,29 @@
+HTML tags used:
+<main>
+<footer>
+<div>
+<button>
+<img>
+<video>
+<ul>
+<li>
+<section>
+<a>
+<h1>
+etc.
+
+CSS properties used:
+background-color
+height
+margin
+padding
+display
+color
+border
+border-radius
+text-align
+etc.
+
+Description:
+I used Javascript to add interactive button to give treats to the cats
+and I used Bootstrap for the navigation bar and containers.

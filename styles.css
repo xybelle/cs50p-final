@@ -1,0 +1,109 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Indie Flower", cursive;
+}
+
+body {
+  background-color: #f4f4f4;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+main {
+  flex: 1;
+}
+
+.avatar {
+  border: 8px solid #fff;
+}
+
+footer {
+  background-color: #C9A9A6;
+  text-align: center;
+}
+
+.container-fluid {
+  background-color: #F2D2BD;
+  padding: 30px;
+}
+
+.home-body {
+  background-color: #C9A9A6;
+}
+
+button {
+  font-size: 20px;
+  background-color: #f0f0f0;
+  border-radius: 25px;
+  padding: 12px 30px;
+}
+
+#hidden-icon {
+  display: none;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+}
+
+
+video {
+  width: 250px;
+  height: 500px;
+  border-radius: 20px;
+  border: 8px solid #fff;
+}
+
+.meet {
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 2rem;
+}
+
+section {
+  padding: 0 19%;
+}
+
+.meet-text h1 {
+  font-size: 50px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 40px;
+  text-align: center;
+  line-height: .5;
+}
+
+@media (max-width: 1460px){
+  section {
+    padding: 0 12%;
+    transition: 2s;
+  }
+}
+
+@media (max-width: 500px) {
+  section {
+    padding: 0 2%;
+  }
+  .meet {
+    text-align: center;
+    height: 100%;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+}
