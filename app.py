@@ -85,7 +85,7 @@ def index():
         portfolio.append(stock_info)
 
     # Calculate grand total (stocks total value plus cash balance)
-    
+
     grand_total = "{:.2f}".format(cash_bal + total_value)
 
     return render_template("index.html", stocks=portfolio, balance=cash_bal, grand_total=grand_total)
@@ -114,12 +114,11 @@ def buy():
         else:
             rows = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
 
-            cash_balance = float(rows[0]["cash"])
-            stock_price = float(stock["price"])
-            num_shares = int(shares)
-            buy_price = stock_price * num_shares
-            bal = cash_balance - buy_price
-            balance = "{:.2f}".format(bal)
+            cash_balance = round(float(rows[0]["cash"]), 2)
+            stock_price = round(float(stock["price"]),2)
+            buy_price = stock_price * int(shares)
+            bal = cash_balance - round(buy_price, 2)
+            balance = round(bal, 2)
 
             if bal < 0:
                 return apology("Not enough cash balance")

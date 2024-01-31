@@ -20,15 +20,15 @@
                     <tr>
                         <td>{{ stock.symbol }}</td>
                         <td>{{ stock.shares }}</td>
-                        <td>{{ stock.xprice }}</td>
-                        <td>{{ stock.total }}</td>
+                        <td>${{ stock.xprice }}</td>
+                        <td>${{ stock.total }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
     <div class="container text-center">
-        <h5>Cash balance: {{ balance }}</h5>
-        <h5>Grand Total: {{ grand_total }}</h5>
+        <h5>Cash balance: ${{ balance }}</h5>
+        <h5>Grand Total: ${{ grand_total }}</h5>
     </div>
 {% endblock %}
