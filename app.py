@@ -211,7 +211,7 @@ def quote():
 
         try:
             stock = lookup(symbol)
-        except Exceptions as e:
+        except Exception as e:
             return apology(f"Error looking up stock: {e}")
 
         # If lookup is unsuccessful
