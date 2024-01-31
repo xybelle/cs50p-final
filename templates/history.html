@@ -22,7 +22,7 @@
                         <td>{{ _.type }}</td>
                         <td>{{ _.stock }}</td>
                         <td>{{ _.shares }}</td>
-                        <td>${{ _.buy_sell_price|float|round(2)|string|replace(".", ".0") }}</td>
+                        <td>${{ _.buy_sell_price|float|round(2)|string|replace(".0", ".00") }}</td>
                         <td>{{ _.date_purchased }}</td>
                     </tr>
                 {% endfor %}
