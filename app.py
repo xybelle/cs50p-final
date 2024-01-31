@@ -208,7 +208,11 @@ def quote():
         symbol = request.form.get("symbol")
         if not symbol:
             return apology("Enter a stock symbol")
-        stock = lookup(symbol)
+
+        try:
+            stock = lookup(symbol)
+        except Exceptions as e:
+            return apology(f"Error looking up stock: {e}")
 
         # If lookup is unsuccessful
         if stock is None or 'symbol' not in stock:
@@ -324,6 +328,8 @@ def sell():
 @app.route("/change_password", methods=["GET", "POST"])
 @login_required
 def change_password():
+    """Change password for user"""
+
     if request.method == "GET":
         return render_template("change_password.html")
 
