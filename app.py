@@ -86,7 +86,7 @@ def index():
         portfolio.append(stock_info)
 
     # Calculate grand total (stocks total value plus cash balance)
-    total =  cash + total_value
+    total = cash + total_value
     grand_total = "{:.2f}".format(total)
 
     return render_template("index.html", stocks=portfolio, balance=cash_bal, grand_total=grand_total)
@@ -145,7 +145,8 @@ def buy():
 def history():
     """Show history of transactions"""
     if request.method == "GET":
-        history = db.execute("SELECT type, stock, shares, buy_sell_price, date_purchased FROM transactions WHERE user_id = ?", session["user_id"])
+        history = db.execute(
+            "SELECT type, stock, shares, buy_sell_price, date_purchased FROM transactions WHERE user_id = ?", session["user_id"])
         return render_template("history.html", history=history)
 
     return apology("TODO")
