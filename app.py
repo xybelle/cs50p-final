@@ -218,6 +218,9 @@ def quote():
         if stock is None or 'symbol' not in stock:
             return apology("Symbol does not exist")
 
+        print("Symbol:", symbol)
+        print("Stock Price:", stock['price'])
+
         return render_template("quoted.html", price=stock['price'], symbol=stock['symbol'])
 
 
