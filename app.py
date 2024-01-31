@@ -117,7 +117,7 @@ def buy():
             rows = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
 
             cash_balance = round(float(rows[0]["cash"]), 2)
-            stock_price = round(float(stock["price"]),2)
+            stock_price = round(float(stock["price"]), 2)
             buy_price = stock_price * int(shares)
             bal = cash_balance - round(buy_price, 2)
             balance = round(bal, 2)
@@ -310,8 +310,6 @@ def sell():
         elif int(shares) <= 0:
             return apology("Enter number of shares you wish to sell")
 
-        updated_shares = shares_owned - int(shares)
-
         # Add sell transaction to database and handling error
         try:
             db.execute(
@@ -323,7 +321,7 @@ def sell():
 
         # Get current stock price
         cprice = lookup(stock)
-        xprice = cprice['price'] * int(shares)
+        xprice = round(cprice['price'], 2) * int(shares)
         sell_price = "{:.2f}".format(xprice)
 
         # Update cash balance
