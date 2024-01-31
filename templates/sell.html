@@ -7,7 +7,7 @@
 {% block main %}
     <form action="/sell" method="post">
         <div class="mb-3">
-            <select name="stock_options" id="stock_options">
+            <select name="symbol" id="symbol">
                 <option selected disabled>Select stock you want to sell</option>
                 {% for option in options %}
                     <option value="{{ option['stock'] }}">{{ option['stock'] }}</option>

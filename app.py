@@ -284,21 +284,18 @@ def sell():
 
     if request.method == "POST":
         print(request.form)
-        stock = request.form.get("stock_options")
+        stock = request.form.get("symbol")
         shares = request.form.get("shares")
-        print(stock)
 
         # Get number of shares bought
         bought = db.execute(
             "SELECT SUM(shares) FROM transactions WHERE user_id = ? AND stock = ? AND type = 'buy'",
             session["user_id"], stock)
-        print(bought)
 
         # Get number of shares sold
         sold = db.execute(
             "SELECT SUM(shares) FROM transactions WHERE user_id = ? AND stock = ? AND type = 'sell'",
             session["user_id"], stock)
-        print(sold)
 
         b = bought[0]['SUM(shares)'] if bought[0]['SUM(shares)'] is not None else 0
         s = sold[0]['SUM(shares)'] if sold[0]['SUM(shares)'] is not None else 0
@@ -325,8 +322,9 @@ def sell():
             return apology("Error selling shares")
 
         # Get current stock price
-        xprice = lookup(stock)
-        sell_price = xprice['price'] * int(shares)
+        cprice = lookup(stock)
+        xprice = xprice['price'] * int(shares)
+        sell_price = "{:.2f}".format(xprice)
 
         # Update cash balance
         db.execute("UPDATE users SET cash = ? WHERE id = ?", sell_price, session["user_id"])
