@@ -106,12 +106,12 @@ def buy():
         if stock == None:
             return apology("Symbol does not exist")
 
-        elif shares is None or shares == "" or int(shares) <= 0:
+        elif shares is None or shares == "" or float(shares) <= 0:
             return apology("Enter the number of shares you wish to buy")
         else:
             rows = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
             cash = rows[0]["cash"]
-            buy_price = int(stock['price']) * int(shares)
+            buy_price = float(stock['price']) * float(shares)
             bal = cash - buy_price
 
             if bal < 0:
@@ -122,7 +122,7 @@ def buy():
                 try:
                     # Add transaction to database
                     db.execute("INSERT INTO transactions (type, user_id, stock, shares) VALUES (?, ?, ?, ?)",
-                               'buy', id, stock['symbol'], int(shares))
+                               'buy', id, stock['symbol'], float(shares))
 
                     # Update cash balance
                     db.execute("UPDATE users SET cash = ? WHERE id = ?", bal, id)
