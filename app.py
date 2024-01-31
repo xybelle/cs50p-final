@@ -103,15 +103,18 @@ def buy():
         symbol = request.form.get("symbol")
         stock = lookup(symbol)
         shares = request.form.get("shares")
+        price = float(stock['price'])
+        stock_price = "{:.2f}".format(price)
+
         if stock == None:
             return apology("Symbol does not exist")
 
-        elif shares is None or shares == "" or float(shares) <= 0:
-            return apology("Enter the number of shares you wish to buy")
+        elif shares is None or shares == "" or int(shares) <= 0:
+            return apology("Enter the number of shares you wish to buy", 400)
         else:
             rows = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
             cash = rows[0]["cash"]
-            buy_price = float(stock['price']) * float(shares)
+            buy_price = stock_price * int(shares)
             bal = cash - buy_price
 
             if bal < 0:
@@ -122,7 +125,7 @@ def buy():
                 try:
                     # Add transaction to database
                     db.execute("INSERT INTO transactions (type, user_id, stock, shares) VALUES (?, ?, ?, ?)",
-                               'buy', id, stock['symbol'], float(shares))
+                               'buy', id, stock['symbol'], int(shares))
 
                     # Update cash balance
                     db.execute("UPDATE users SET cash = ? WHERE id = ?", bal, id)
@@ -218,9 +221,6 @@ def quote():
         if stock is None or 'symbol' not in stock:
             return apology("Symbol does not exist")
 
-        print("Symbol:", symbol)
-        print(stock)
-        print("Stock Price:", stock['price'])
         price = float(stock['price'])
         stock_price = "{:.2f}".format(price)
 
