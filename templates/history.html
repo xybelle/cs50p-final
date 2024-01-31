@@ -22,7 +22,7 @@
                         <td>{{ _.type }}</td>
                         <td>{{ _.stock }}</td>
                         <td>{{ _.shares }}</td>
-                        <td>${{ (_.buy_sell_price)|float }}</td>
+                        <td>${{ _.buy_sell_price|float }}</td>
                         <td>{{ _.date_purchased }}</td>
                     </tr>
                 {% endfor %}
