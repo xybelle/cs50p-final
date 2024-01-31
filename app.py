@@ -218,9 +218,7 @@ def quote():
         if stock is None or 'symbol' not in stock:
             return apology("Symbol does not exist")
 
-        # If lookup is successful
-        else:
-            return render_template("quoted.html", price=stock['price'], symbol=stock['symbol'])
+        return render_template("quoted.html", price=stock['price'], symbol=stock['symbol'])
 
 
 @app.route("/register", methods=["GET", "POST"])

@@ -6,19 +6,7 @@
 
 {% block main %}
     <div class="container py-5 text-center">
-        <table class="container py-5 text-center">
-            <thead>
-                <tr>
-                    <th>Symbol</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ symbol }}</td>
-                    <td>{{ price }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <p>Symbol: {{ symbol }}</p>
+        <p>Price: {{ price }}</p>
     </div>
 {% endblock %}
