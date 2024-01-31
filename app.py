@@ -41,7 +41,8 @@ def index():
 
     # Get user's cash balance
     balance = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
-    cash_bal = balance[0]['cash']
+    cash = balance[0]['cash']
+    cash_bal = "{:.2f}".format(cash)
 
     portfolio = []
 
@@ -54,7 +55,7 @@ def index():
         total_value_ps = 0
         symbol = stocks[i]['stock']
         price = lookup(symbol)
-        current_price = price['price']
+        current_price = round(float(price['price']), 2)
 
         # Get number of shares bought
         bought = db.execute(
@@ -73,20 +74,21 @@ def index():
         shares_owned = b - s
 
         # Total value of each holding
-        total_value_ps = int(current_price) * shares_owned
+        total_value_ps = current_price * int(shares_owned)
         total_value += total_value_ps
+        formatted_total_value = round(total_value, 2)
 
         # Update stock_info dictionary
         stock_info['symbol'] = symbol
         stock_info['shares'] = shares_owned
-        stock_info['xprice'] = current_price
-        stock_info['total'] = total_value_ps
+        stock_info['xprice'] = "{:.2f}".format(current_price)
+        stock_info['total'] = "{:.2f}".format(total_value_ps)
 
         portfolio.append(stock_info)
 
     # Calculate grand total (stocks total value plus cash balance)
-
-    grand_total = "{:.2f}".format(cash_bal + total_value)
+    total =  cash + total_value
+    grand_total = "{:.2f}".format(total)
 
     return render_template("index.html", stocks=portfolio, balance=cash_bal, grand_total=grand_total)
 
