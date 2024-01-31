@@ -76,7 +76,6 @@ def index():
         # Total value of each holding
         total_value_ps = current_price * int(shares_owned)
         total_value += total_value_ps
-        formatted_total_value = round(total_value, 2)
 
         # Update stock_info dictionary
         stock_info['symbol'] = symbol
@@ -129,8 +128,8 @@ def buy():
 
                 try:
                     # Add transaction to database
-                    db.execute("INSERT INTO transactions (type, user_id, stock, shares) VALUES (?, ?, ?, ?)",
-                               'buy', id, stock['symbol'], int(shares))
+                    db.execute("INSERT INTO transactions (type, user_id, stock, shares, buy_sell_price) VALUES (?, ?, ?, ?, ?)",
+                               'buy', id, stock['symbol'], int(shares), stock_price)
 
                     # Update cash balance
                     db.execute("UPDATE users SET cash = ? WHERE id = ?", balance, id)
@@ -146,7 +145,7 @@ def buy():
 def history():
     """Show history of transactions"""
     if request.method == "GET":
-        history = db.execute("SELECT type, stock, shares, purchase_date FROM transactions WHERE user_id = ?", session["user_id"])
+        history = db.execute("SELECT type, stock, shares, buy_sell_price, date_purchased FROM transactions WHERE user_id = ?", session["user_id"])
         return render_template("history.html", history=history)
 
     return apology("TODO")
@@ -310,15 +309,6 @@ def sell():
         elif int(shares) <= 0:
             return apology("Enter number of shares you wish to sell")
 
-        # Add sell transaction to database and handling error
-        try:
-            db.execute(
-                "INSERT INTO transactions (type, user_id, stock, shares) VALUES (?, ?, ?, ?)",
-                'sell', session["user_id"], stock, int(shares))
-        except Exception as e:
-            print(f"Error inserting sell transaction: {e}")
-            return apology("Error selling shares")
-
         # Get current stock price
         cprice = lookup(stock)
 
@@ -333,6 +323,15 @@ def sell():
 
         # Update cash balance
         db.execute("UPDATE users SET cash = ? WHERE id = ?", updated_cash, session["user_id"])
+
+        # Add sell transaction to database and handling error
+        try:
+            db.execute(
+                "INSERT INTO transactions (type, user_id, stock, shares, buy_sell_price) VALUES (?, ?, ?, ?, ?)",
+                'sell', session["user_id"], stock, int(shares), cprice["price"])
+        except Exception as e:
+            print(f"Error inserting sell transaction: {e}")
+            return apology("Error selling shares")
 
         return redirect("/")
 

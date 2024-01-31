@@ -12,6 +12,7 @@
                     <th>Transaction Type</th>
                     <th>Stock</th>
                     <th>Shares</th>
+                    <th>Buy/Sell Price</th>
                     <th>Purchase Date</th>
                 </tr>
             </thead>
@@ -21,7 +22,8 @@
                         <td>{{ _.type }}</td>
                         <td>{{ _.stock }}</td>
                         <td>{{ _.shares }}</td>
-                        <td>{{ _.purchase_date }}</td>
+                        <td>${{ _.buy_sell_price }}</td>
+                        <td>{{ _.date_purchased }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
