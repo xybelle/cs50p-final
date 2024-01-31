@@ -112,15 +112,12 @@ def buy():
             return apology("Enter the number of shares you wish to buy", 400)
         else:
             rows = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
-            cash = rows[0]["cash"]
-            cash_bal = "{:.2f}".format(cash)
 
-            price = float(stock["price"])
-            stock_price = "{:.2f}".format(price)
-
-            buy_price = stock_price * int(shares)
-            bal = float(cash_bal) - float(buy_price)
-            balance = "{:.2f}".format(bal)
+            cash_balance = "{:.2f}".format(float(rows[0]["cash"]))
+            stock_price = "{:.2f}".format(float(stock["price"]))
+            num_shares - "{:.2f}".format(int(shares))
+            buy_price = stock_price * num_shares
+            balance = "{:.2f}".format(cash_balance - buy_price)
 
             if balance < 0:
                 return apology("Not enough cash balance")
