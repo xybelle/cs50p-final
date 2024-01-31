@@ -321,11 +321,18 @@ def sell():
 
         # Get current stock price
         cprice = lookup(stock)
+
+        # Get sell price from selling stock
         xprice = round(cprice['price'], 2) * int(shares)
-        sell_price = "{:.2f}".format(xprice)
+
+        # Get updated cash balance
+        rows = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
+        cash_balance = round(float(rows[0]["cash"]), 2)
+
+        updated_cash = xprice + cash_balance
 
         # Update cash balance
-        db.execute("UPDATE users SET cash = ? WHERE id = ?", sell_price, session["user_id"])
+        db.execute("UPDATE users SET cash = ? WHERE id = ?", updated_cash, session["user_id"])
 
         return redirect("/")
 
