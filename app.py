@@ -103,8 +103,6 @@ def buy():
         symbol = request.form.get("symbol")
         stock = lookup(symbol)
         shares = request.form.get("shares")
-        price = float(stock['price'])
-        stock_price = "{:.2f}".format(price)
 
         if stock == None:
             return apology("Symbol does not exist")
@@ -115,8 +113,12 @@ def buy():
             rows = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
             cash = rows[0]["cash"]
             cash_bal = "{:.2f}".format(cash)
+
+            price = float(stock["price"])
+            stock_price = "{:.2f}".format(price)
+
             buy_price = stock_price * int(shares)
-            bal = float(cash) - float(buy_price)
+            bal = cash_bal - float(buy_price)
 
             if bal < 0:
                 return apology("Not enough balance")
