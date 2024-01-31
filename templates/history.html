@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div class="container py-5 text-center">
+        <table class="container py-5 text-center">
+            <thead>
+                <tr>
+                    <th>Transaction Type</th>
+                    <th>Stock</th>
+                    <th>Shares</th>
+                    <th>Purchase Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for _ in history %}
+                    <tr>
+                        <td>{{ _.type }}</td>
+                        <td>{{ _.stock }}</td>
+                        <td>{{ _.shares }}</td>
+                        <td>{{ _.purchase_date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
