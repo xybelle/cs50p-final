@@ -121,7 +121,7 @@ def buy():
 
                 try:
                     # Add transaction to database
-                    db.execute("INSERT INTO transactions (type, user_id, stock, shares) VALUES (?, ?, ?)",
+                    db.execute("INSERT INTO transactions (type, user_id, stock, shares) VALUES (?, ?, ?, ?)",
                                'buy', id, stock['symbol'], int(shares))
 
                     # Update cash balance
