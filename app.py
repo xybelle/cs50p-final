@@ -119,7 +119,7 @@ def buy():
             stock_price = "{:.2f}".format(price)
 
             buy_price = stock_price * int(shares)
-            bal = cash_bal - buy_price
+            bal = float(cash_bal) - float(buy_price)
 
             if bal < 0:
                 return apology("Not enough cash balance")
