@@ -323,7 +323,7 @@ def sell():
 
         # Get current stock price
         cprice = lookup(stock)
-        xprice = xprice['price'] * int(shares)
+        xprice = cprice['price'] * int(shares)
         sell_price = "{:.2f}".format(xprice)
 
         # Update cash balance
