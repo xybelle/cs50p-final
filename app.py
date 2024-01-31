@@ -85,7 +85,8 @@ def index():
         portfolio.append(stock_info)
 
     # Calculate grand total (stocks total value plus cash balance)
-    grand_total = cash_bal + total_value
+    
+    grand_total = "{:.2f}".format(cash_bal + total_value)
 
     return render_template("index.html", stocks=portfolio, balance=cash_bal, grand_total=grand_total)
 
