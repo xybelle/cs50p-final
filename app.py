@@ -222,7 +222,7 @@ def quote():
         print(stock)
         print("Stock Price:", stock['price'])
 
-        return render_template("quoted.html", price=stock['price'], symbol=stock['symbol'])
+        return render_template("quoted.html", price=float(stock['price']), symbol=stock['symbol'])
 
 
 @app.route("/register", methods=["GET", "POST"])
