@@ -219,6 +219,7 @@ def quote():
             return apology("Symbol does not exist")
 
         print("Symbol:", symbol)
+        print(stock)
         print("Stock Price:", stock['price'])
 
         return render_template("quoted.html", price=stock['price'], symbol=stock['symbol'])
