@@ -115,7 +115,7 @@ def buy():
 
             cash_balance = "{:.2f}".format(float(rows[0]["cash"]))
             stock_price = "{:.2f}".format(float(stock["price"]))
-            num_shares - "{:.2f}".format(int(shares))
+            num_shares = "{:.2f}".format(int(shares))
             buy_price = stock_price * num_shares
             balance = "{:.2f}".format(cash_balance - buy_price)
 
@@ -130,7 +130,7 @@ def buy():
                                'buy', id, stock['symbol'], int(shares))
 
                     # Update cash balance
-                    db.execute("UPDATE users SET cash = ? WHERE id = ?", bal, id)
+                    db.execute("UPDATE users SET cash = ? WHERE id = ?", balance, id)
                 except Exception as e:
                     print(f"Error inserting/updating transaction/cash balance: {e}")
                     return apology("Error buying shares")
