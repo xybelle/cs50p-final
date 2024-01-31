@@ -118,10 +118,10 @@ def buy():
             stock_price = "{:.2f}".format(price)
 
             buy_price = stock_price * int(shares)
-            bal = cash_bal - float(buy_price)
+            bal = cash_bal - buy_price
 
             if bal < 0:
-                return apology("Not enough balance")
+                return apology("Not enough cash balance")
             else:
                 id = rows[0]["id"]
 
