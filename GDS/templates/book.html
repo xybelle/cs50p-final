@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block header %}
+    <h1 class="display-6">Select the class below</h1>
+{% endblock %}
+
+{% block main %}
+    <form action="/book" method="post">
+        <input type="radio" class="btn-check" name="classes" id="ballet" value="Ballet" autocomplete="off">
+        <label class="btn btn-secondary" for="ballet">Ballet (3pm - 4pm)</label>
+
+        <input type="radio" class="btn-check" name="classes" id="tap" value="Tap" autocomplete="off">
+        <label class="btn btn-secondary" for="tap">Tap (3pm - 4pm</label>
+
+        <input type="radio" class="btn-check" name="classes" id="hiphop" value="Hip-Hop" autocomplete="off">
+        <label class="btn btn-secondary" for="hiphop">Hip Hop (3pm - 4pm</label>
+
+        <button class="btn btn-primary" type="submit">Book</button>
+    </form>
+{% endblock %}
+
+{% block footer %}
+    Book
+{% endblock %}

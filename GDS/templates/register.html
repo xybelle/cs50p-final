@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block header %}
+    <h1 class="display-5">Please enter your details below</h1>
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" required autocomplete="off" autofocus name="fname" placeholder="First Name" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" required autocomplete="off" name="sname" placeholder="Last Name" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" required autocomplete="off" name="parent-guardian" placeholder="Parent's/Guardian's Name" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" required autocomplete="off" name="email" placeholder="Email Address" type="email">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" required autocomplete="off" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" required autocomplete="off" name="confirmation" placeholder="Confirm Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+{% endblock %}

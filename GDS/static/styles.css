@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.content {
+    align-self: flex-start;
+}
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 5px;
+    text-align: center;
+}
+
+.content-wrapper {
+    align-self: flex-start;
+}

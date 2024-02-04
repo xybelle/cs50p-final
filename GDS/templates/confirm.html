@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h1 class="display-5">Please confirm booking</h1>
+    <form action="/confirm" method="post">
+        <h1 class="display-6">{{ class_name }}</h1>
+        <input type="hidden" name="confirmation" value="{{ class_name }}">
+        <button class="btn btn-primary" type="submit">Confirm</button>
+    </form>
+{% endblock %}
