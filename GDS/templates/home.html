@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block header %}
+    <h1 class="display-6">Hey, {{ name.guardian }} </h1>
+    <a href="/book" class="btn btn-primary">Book a class</a>
+{% endblock %}
+
+{% block main %}
+    <h1 class="display-6">Upcoming Classes</h1>
+    {% if c == [] %}
+        <p class="lead"> No upcoming classes</p>
+    {% else %}
+        {% for entry in c %}
+            <p class="lead">{{ c.name }}</p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
