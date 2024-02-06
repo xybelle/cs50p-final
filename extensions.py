@@ -1,6 +1,8 @@
 f = input("File name: ").lower().lstrip().rstrip()
+c = f.count('.')
+print(c)
 
-if f.count('.') >= 2:
+if c > 1:
     print("application/octet-stream")
 
 if f[2] == 'gif' or f[2] == 'jpg' or f[2] == 'jpeg' or f[2] == 'png':
