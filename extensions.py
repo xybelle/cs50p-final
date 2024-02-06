@@ -1,6 +1,4 @@
-f = input("File name: ").lower().lstrip().rstrip()
-
-f = f.split('.')
+f = input("File name: ").lower().lstrip().rstrip().split('.')
 
 if f[len(f) - 1] == 'gif' or f[len(f) - 1] == 'png':
     print(f"image/{f[len(f) - 1]}")
