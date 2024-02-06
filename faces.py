@@ -7,10 +7,10 @@ def main():
 
 def convert(m):
     if ":)" in m:
-        new_m = m.replace(":)", "🙂")
+        m = m.replace(":)", "🙂")
     if ":(" in m:
-        new_m = new_m.replace(":(", "🙁")
-    return new_m
+        m = m.replace(":(", "🙁")
+    return m
 
 
 main()
