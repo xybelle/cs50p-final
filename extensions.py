@@ -1,4 +1,4 @@
-f = input("File name: ").lower().partition('.')
+f = input("File name: ").lower().lstrip().rstrip().partition('.')
 
 if f[2] == 'gif' or f[2] == 'jpg' or f[2] == 'jpeg' or f[2] == 'png':
     print(f"image/{f[2]}")
