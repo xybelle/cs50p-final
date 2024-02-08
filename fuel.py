@@ -1,12 +1,12 @@
 def main():
     percent = get_fraction()
 
-    if percent <= 0.01:
+    if percent <= 1:
         print("E")
     elif percent >= 99:
         print("F")
     else:
-        print(f"{int(percent)}%")
+        print(f"{int(round(percent))}%")
 
 
 def get_fraction():
