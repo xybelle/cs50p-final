@@ -7,6 +7,7 @@ while True:
         else:
             grocery_list[item] = 1
     except EOFError:
-        for item in grocery_list:
+        ls = sorted(grocery_list.keys())
+        for item in ls:
             print(f"{grocery_list.get(item)} {item.upper()}")
         break
