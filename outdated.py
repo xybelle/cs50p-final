@@ -56,7 +56,7 @@ def validate_date(mdy):
     elif '/' in mdy:
         temp = mdy.split('/')
         if temp[0].isdigit() and temp[1].isdigit() and temp[2].isdigit():
-            return mdy.split('/')
+            return temp
     else:
         raise ValueError
 
