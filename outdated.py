@@ -54,7 +54,9 @@ def validate_date(mdy):
     if ' ' in mdy and ',' in mdy:
         return mdy.split(' ')
     elif '/' in mdy:
-        return mdy.split('/')
+        temp = mdy.split('/')
+        if temp[0].isdigit and temp[1].isdigit and temp[2].isdigit:
+            return mdy.split('/')
     else:
         raise ValueError
 
