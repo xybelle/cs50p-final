@@ -19,8 +19,9 @@ def main():
         try:
             date = input("Date: ").strip()
             date = validate_date(date)
+            print(date)
             m = check_month(date[0])
-            d = check_day(date[1])
+            d = check_day(date[1].rstrip(','))
             y = check_year(date[2])
             print(f"{y}-{m:02}-{d:02}")
             break
@@ -51,11 +52,11 @@ def check_year(year):
         return year
 
 
-def validate_date(ymd):
-    if ymd.isalnum() and ' ' and ',' in ymd:
-        return ymd.split().rtrip(',')
-    elif '/' in ymd and not ymd.isalnum():
-        return ymd.split('/')
+def validate_date(mdy):
+    if mdy.isalnum() and ' ' in mdy and ',' in mdy:
+        return mdy.split()
+    elif '/' in mdy and not mdy.isalnum():
+        return mdy.split('/')
     else:
         raise ValueError
 
