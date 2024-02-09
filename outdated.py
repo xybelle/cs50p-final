@@ -36,6 +36,7 @@ def check_month(month):
     else:
         raise KeyError
 
+
 def check_day(day):
     if int(day) >= 1 and int(day) <= 31:
         return int(day)
