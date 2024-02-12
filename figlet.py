@@ -23,12 +23,12 @@ def main():
 
 
 def print_message(font=None):
-    msg = input("Input: ")
     if font is None:
         font = random.choice(fonts)
     elif font not in fonts:
         sys.exit("Invalid font name")
     figlet.setFont(font=font)
+    msg = input("Input: ")
     print("Output: ")
     print(figlet.renderText(msg))
 
