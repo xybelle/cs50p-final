@@ -10,7 +10,6 @@ fonts = figlet.getFonts()
 
 
 def main():
-    msg = input("Input: ")
     if len(sys.argv) > 3:
         sys.exit("Too many arguments")
     elif len(sys.argv) == 1:
@@ -21,7 +20,7 @@ def main():
         elif sys.argv[2] not in fonts:
             sys.exit("Invalid font name")
         print_message(msg, sys.argv[2])
-
+    msg = input("Input: ")
 
 def print_message(msg, font=None):
     if font is None:
