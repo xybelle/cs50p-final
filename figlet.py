@@ -12,10 +12,10 @@ fonts = figlet.getFonts()
 def main():
     if len(sys.argv) > 3:
         sys.exit("Too many arguments")
-    elif len(sys.argv) == 2:
-        sys.exit("Expected font name")
     elif len(sys.argv) == 1:
         print_message()
+    elif len(sys.argv) == 2:
+        sys.exit("Expected font name")
     elif len(sys.argv) == 3:
         if sys.argv[1] != '--font' and sys.argv[1] != '-f':
             sys.exit("Expected '--font' or '-f'")
