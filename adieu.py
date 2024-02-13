@@ -10,7 +10,7 @@ while True:
         names.append(name)
     except EOFError:
         print()
-        print("Adiue, addieu, to ", end="")
+        print("Adiue, adieu, to ", end="")
         a = p.join(names)
         print(a)
         break
