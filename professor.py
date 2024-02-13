@@ -40,7 +40,7 @@ def get_level():
 
 def generate_integer(level):
     if level == 1:
-        return random.randint(1, 9)
+        return random.randint(0, 9)
     elif level == 2:
         return random.randint(10, 99)
     elif level == 3:
