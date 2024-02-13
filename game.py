@@ -29,6 +29,6 @@ def guess_number(n):
                 print("Too large!")
         except ValueError:
             pass
-
+    sys.exit()
 
 main()
