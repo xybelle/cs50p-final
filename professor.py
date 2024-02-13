@@ -21,7 +21,6 @@ def main():
                 else:
                     tries += 1
                     print("EEE")
-                    raise ValueError
             except ValueError:
                 pass
     print(f"Score: {correct_ans}")
