@@ -22,7 +22,7 @@ def guess_number(n):
                 raise ValueError
             if g == n:
                 print("Just right!")
-                #break
+                break
             elif g < n:
                 print("Too small!")
             elif g > n:
