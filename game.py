@@ -20,7 +20,6 @@ def guess_number(number):
             g = int(input("Guess: "))
             if g == n:
                 print("Just right!")
-                break
             elif g < n:
                 print("Too small!")
             elif g > n:
