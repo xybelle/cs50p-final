@@ -7,19 +7,20 @@ def main():
             number = int(input("Level: "))
             if number <= 0:
                 raise ValueError
-            guess_number(number)
+            rand_number = random.randint(1, number)
+            guess_number(rand_number)
             break
         except ValueError:
             pass
 
 
-def guess_number(number):
+def guess_number(n):
     while True:
         try:
-            n = random.randint(1, number)
             g = int(input("Guess: "))
             if g == n:
                 print("Just right!")
+                break
             elif g < n:
                 print("Too small!")
             elif g > n:
