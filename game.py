@@ -23,10 +23,8 @@ def guess_number(number):
                 break
             elif g < n:
                 print("Too small!")
-                break
             elif g > n:
                 print("Too large!")
-                break
             else:
                 raise ValueError
         except ValueError:
