@@ -18,6 +18,8 @@ def guess_number(n):
     while True:
         try:
             g = int(input("Guess: "))
+            if g <= 0:
+                raise ValueError
             if g == n:
                 print("Just right!")
                 break
