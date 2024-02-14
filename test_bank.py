@@ -16,3 +16,4 @@ def test_others():
 
 def test_case():
     assert value("ARE YOU OK") == 100
+    assert value("are you ok") == 100
