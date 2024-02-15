@@ -2,9 +2,6 @@ import csv
 import sys
 
 
-from tabulate import tabulate
-
-
 def main():
     # Ensure user prove two command-line arguments
     if len(sys.argv) < 3:
