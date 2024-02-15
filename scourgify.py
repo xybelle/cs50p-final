@@ -35,9 +35,9 @@ def process_csv(data):
     # Splitting name into first name and last name
     # Append first, last, house into processed_data dict
     for row in data:
-        sname, fname = row["name"].lstrip().split(",")
+        sname, fname = row["name"].split(",")
         house = row["house"]
-        processed_data.append({"first": fname, "last": sname, "house": house})
+        processed_data.append({"first": fname.strip(), "last": sname, "house": house})
     return processed_data
 
 
