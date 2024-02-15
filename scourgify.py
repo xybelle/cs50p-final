@@ -40,7 +40,7 @@ def process_csv(data):
 
 def write_csv(processed_data):
     # Writing new CSV
-    with open(sys.argv[2], "a") as file:
+    with open(sys.argv[2], "w") as file:
         writer = csv.DictWriter(file, fieldnames=["first", "last", "house"])
         writer.writeheader()
         for row in processed_data:
