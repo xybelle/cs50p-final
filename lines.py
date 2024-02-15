@@ -18,7 +18,6 @@ try:
                 continue
             elif line.lstrip().startswith("#"):
                 continue
-
             count += 1
         print(count)
 except FileNotFoundError:
