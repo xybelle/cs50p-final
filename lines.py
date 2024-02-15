@@ -16,8 +16,10 @@ try:
                 continue
             elif line.lstrip() == "":
                 continue
-            else:
-                count += 1
+            elif line.lstrip().startswith("#"):
+                continue
+
+            count += 1
         print(count)
 except FileNotFoundError:
     sys.exit("File does not exist")
