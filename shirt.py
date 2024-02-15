@@ -7,8 +7,21 @@ from PIL import Image, ImageOps
 valid_extensions = [".jpg", ".JPG", ".jpeg", ".JPEG", ".png", ".PNG"]
 
 def main():
-    if not valid():
-        sys.exit()
+    # Ensure user provide two command-line arguments
+    if len(sys.argv) < 3:
+        sys.exit("Too few command-line arguments\nUsage: python shirt.py input output")
+
+    elif len(sys.argv) > 3:
+        sys.exit("Too many command-line arguments\nUsage: python shirt.py input output")
+
+    temp_a = os.path.splitext(sys.argv[1])
+    temp_b = os.path.splitext(sys.argv[2])
+    if temp_a[1] != temp_b[1]:
+        sys.exit("Input and output have different extensions")
+
+    if temp_a[1] not in valid_extensions and temp_b[1] not in valid_extensions:
+        sys.exit("Invalid input or output extension(s)")
+
     resize_image()
 
 
