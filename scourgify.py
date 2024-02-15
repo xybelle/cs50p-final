@@ -9,9 +9,7 @@ def main():
     elif len(sys.argv) > 3:
         sys.exit("Too many command-line arguments")
 
-    data = read_csv()
-    processed_data = process_csv(data)
-    write_csv(processed_data)
+    write_csv(processed_data(read_csv()))
 
 
 def read_csv():
