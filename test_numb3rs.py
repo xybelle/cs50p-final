@@ -12,5 +12,5 @@ def test_validate():
 
 
 def test_four_sets():
-    assert numb3rs.four_sets("1.1.1.1.1") == False
-    assert numb3rs.four_sets("1.1.1.1") == True
+    assert numb3rs.validate("1.1.1.1.1") == False
+    assert numb3rs.validate("1.1.1.1") == True
