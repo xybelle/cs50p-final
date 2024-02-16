@@ -25,7 +25,7 @@ def max_255(digits):
 
 def four_sets(n):
     n = n.split(".")
-    if len(n) > 4:
+    if len(n) != 4:
         return False
     return True
 
