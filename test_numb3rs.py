@@ -8,9 +8,9 @@ def test_validate():
 
 
 def test_validate_max_255():
-    assert max_255("256.255.255.255") == False
-    assert max_255("255.255.255.255") == True
-    assert max_255("1.1.1.1") == True
+    assert validate("256.255.255.255") == False
+    assert validate("255.255.255.255") == True
+    assert validate("1.1.1.1") == True
 
 
 def test_validate_four_sets():
