@@ -7,12 +7,12 @@ def test_validate():
     assert validate("cat") == False
 
 
-def test_validate():
+def test_validate_max_255():
     assert max_255("256.255.255.255") == False
     assert max_255("255.255.255.255") == True
     assert max_255("1.1.1.1") == True
 
 
-def test_four_sets():
+def test_validate_four_sets():
     assert four_sets("1.1.1.1.1") == False
     assert four_sets("1.1.1.1") == True
