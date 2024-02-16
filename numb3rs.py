@@ -14,6 +14,8 @@ def validate(ip):
 
 def max_255(digits):
     parts = digits.split(".")
+    if len(parts) > 4:
+        return False
     for part in parts:
         if not part.isdigit():
             return False
