@@ -27,13 +27,13 @@ def convert(s):
 
 
 def validate_input(s):
-    #try:
+    try:
         if matches := re.search(r"((?:1[0-2]|[1-9]):?(?:[0-5][0-9])?) (AM|PM) to ((?:1[0-2]|[1-9]):?(?:[0-5][0-9])?) (AM|PM)", s):
             return matches.groups()
         else:
             raise ValueError
-    #except ValueError:
-        #print("Hour: time AM/PM to time AM/PM")
+    except ValueError:
+        print("Hour: time AM/PM to time AM/PM")
 
 
 def hours_mins_fmt(hour, mid):
