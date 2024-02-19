@@ -22,4 +22,4 @@ def test_format():
     with pytest.raises(ValueError):
         convert("9 AM 5 PM")
     with pytest.raises(ValueError):
-        convert("9:60 AM 5:00 PM")
+        convert("13:00 AM 5:00 PM")
