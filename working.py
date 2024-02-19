@@ -42,7 +42,8 @@ def hours_mins_fmt(hour, mid):
             hour = 0
         return int(hour)
     if mid == "PM":
-        hour = int(hour) + 12
+        if hour != "12":
+            hour = int(hour) + 12
         return int(hour)
 
 
@@ -52,7 +53,8 @@ def hours_fmt(hour, mid):
             hour = 0
         return int(hour)
     if mid == "PM":
-        hour = int(hour) + 12
+        if hour != "12":
+            hour = int(hour) + 12
         return int(hour)
 
 
