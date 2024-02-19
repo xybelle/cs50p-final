@@ -1,4 +1,5 @@
 import re
+import sys
 
 
 def main():
@@ -41,9 +42,13 @@ def for_pm(time):
 
 def for_am(time):
     if ":" in time:
-            h, m = time.split(":")
-            return int(h), int(m)
+        h, m = time.split(":")
+        if h == "12":
+            h = 0
+        return int(h), int(m)
     else:
+        if time == "12":
+            h = 0
         h = int(time)
         m = 0
         return h, m

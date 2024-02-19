@@ -1,3 +1,5 @@
+import pytest
+
 from working import convert
 
 
@@ -14,3 +16,10 @@ def test_am_pm():
 def test_pm_pm():
     assert convert("1 PM to 9 PM") == "13:00 to 21:00"
     assert convert("1:30 PM to 9:30 PM") == "13:30 to 21:30"
+
+
+def test_format():
+    with pytest.raises(ValueError):
+        convert("9 AM 5 PM")
+    with pytest.raises(ValueError):
+        convert("9 AM 5")
