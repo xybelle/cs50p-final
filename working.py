@@ -33,7 +33,7 @@ def validate_input(s):
         else:
             raise ValueError
     except ValueError:
-        print("Hour: time AM/PM to time AM/PM")
+        #print("Hour: time AM/PM to time AM/PM")
         sys.exit(1)
 
 
