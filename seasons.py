@@ -1,4 +1,5 @@
 import inflect
+import sys
 
 p = inflect.engine()
 
@@ -13,7 +14,10 @@ def main():
 
 def get_dob(dob):
     dob_input = date.fromisoformat(dob)
-    return dob_input
+    try:
+        return dob_input
+    except ValueError:
+        sys.exit("Invalid date format")
 
 
 def get_age(dob):
