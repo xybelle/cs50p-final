@@ -15,10 +15,9 @@ def main():
 def get_dob(dob):
     try:
         dob_input = date.fromisoformat(dob)
+        return dob_input
     except ValueError:
         sys.exit("Invalid date format")
-
-    return dob_input
 
 
 def get_age(dob):
