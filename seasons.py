@@ -7,7 +7,7 @@ from datetime import date
 
 
 def main():
-    dob = input("Date of Birth: ")
+    dob = get_dob(input("Date of Birth: "))
     print(f"{sing(get_age(dob))} minutes")
 
 
