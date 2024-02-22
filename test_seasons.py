@@ -8,7 +8,7 @@ def test_sing():
 
 
 def test_format():
-    with pytest.raises(ValueError):
+    with pytest.raises(SystemExit):
         seasons.get_dob("1989-12")
 
 
